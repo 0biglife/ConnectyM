@@ -4,7 +4,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
 //Screens
-import SignIn from './components/auth';
+import AuthComponent from './components/auth';
 import Diary from './components/diary';
 import News from './components/news';
 
@@ -24,12 +24,13 @@ const AppTabComponent = () => {
 
 export const RootNavigator = () => {
   return (
-    <AuthStack.Navigator>
+    <AuthStack.Navigator screenOptions={{headerShown: false}}>
       {isLoggedIn ? (
         <AuthStack.Screen name="Main" component={AppTabComponent} />
       ) : (
-        <AuthStack.Screen name="SignIn" components={SignIn} />
+        <AuthStack.Screen name="SignIn" component={AuthComponent} />
       )}
     </AuthStack.Navigator>
   );
 };
+

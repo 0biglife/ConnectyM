@@ -9,7 +9,7 @@
 import 'react-native-gesture-handler';
 import React, {Component} from 'react';
 
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {RootNavigator} from './routes';
 
