@@ -12,7 +12,7 @@ class AuthForm extends Component {
     form: {
       email: {
         value: '',
-        type: 'textinput',
+        type: 'textinputRevised',
         rules: {},
         valid: false,
       },
@@ -31,6 +31,20 @@ class AuthForm extends Component {
     },
   };
 
+  updateInput = (name, value) => {
+    this.setState({
+      hasErrors: false,
+    });;
+    let formCopy = this.state.form;
+    formCopy[name].value = value;
+
+    this.setState({
+      form: formCopy,
+    });;
+
+    console.warn(this.state.form)
+  };
+
   render() {
     return (
       <View>
@@ -41,6 +55,7 @@ class AuthForm extends Component {
           keyboardType={'email-address'}
           placeholder="이메일 주소"
           placeholderTextColor="#ddd"
+          onChangeText={value => this.updateInput('email', value)}
         />
         <Input
           value={this.state.form.password.value}
@@ -48,6 +63,7 @@ class AuthForm extends Component {
           secureTextEntry={true}
           placeholder="비밀번호"
           placeholderTextColor="#ddd"
+          onChangeText={value => this.updateInput('password', value)}
         />
       </View>
     );
