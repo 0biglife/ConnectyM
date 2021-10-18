@@ -14,6 +14,10 @@ class AuthComponent extends Component {
     loading: false,
   };
 
+  goWithoutLogin = () => {
+    this.props.navigation.navigate('AppTabComponent');
+  };
+
   render() {
     if (this.state.loading) {
       return (
@@ -26,7 +30,7 @@ class AuthComponent extends Component {
         <ScrollView style={styles.container}>
           <View>
             <AuthLogo />
-            <AuthForm />
+            <AuthForm goWithoutLogin={this.goWithoutLogin} />
           </View>
         </ScrollView>
       );

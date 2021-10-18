@@ -145,7 +145,6 @@
 				033B29EA4D627C8AD74FCBF0 /* Pods-ConnectyM-ConnectyMTests.debug.xcconfig */,
 				CDE09176471435C16D7650A8 /* Pods-ConnectyM-ConnectyMTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};

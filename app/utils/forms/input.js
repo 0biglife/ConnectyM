@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
   input: {
     width: '100%',
     borderBottomWidth: 1,
-    borderBottomColor: '#fff',
+    borderBottomColor: 'black',
     fontSize: 17,
     padding: 5,
     marginTop: 30,
