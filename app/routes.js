@@ -5,26 +5,90 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
 //Screens
 import AuthComponent from './components/auth';
-import Diary from './components/diary';
-import News from './components/news';
+// import Home from './components/Home';
+// import HomeView from './components/Home/homeView';
+import {HomeView} from './screens/Home';
+import Search from './screens/Search';
+
+//Icons
+import Icon from 'react-native-vector-icons/Ionicons';
 
 const AuthStack = createStackNavigator();
 const MainScreenTab = createBottomTabNavigator();
+const HomeStack = createStackNavigator();
+const SearchStack = createStackNavigator();
+
+// const headerConfig = {
+//   headerTitleAlign: 'center',
+//   headerTintColor: '#fff',
+//   headerStyle: {
+//     backgroundColor: '#7487C5',
+//   },
+//   // headerTitle: <Logo />,
+//   headerTitleStyle: {
+//     flex: 1,
+//     textAlign: 'center',
+//   },
+// };
 
 const isLoggedIn = false;
 
+// const TabBarIcon = (focused, name) => {
+//   let iconName, iconSize;
+//   if (name === 'Home') {
+//     iconName = 'home';
+//   } else if (name === 'Search') {
+//     iconName = 'search';
+//   }
+
+//   return <Icon name={iconName} size={iconSize} color="#fff" />;
+// };
+
+const HomeStackComponent = () => {
+  return (
+    <HomeStack.Navigator>
+      {/* <HomeStack.Screen name="Home" component={Home} /> */}
+      <HomeStack.Screen name="HomeView" component={HomeView} />
+    </HomeStack.Navigator>
+  );
+};
+
+const SearchStackComponent = () => {
+  return (
+    <SearchStack.Navigator>
+      <SearchStack.Screen name="Search" component={Search} />
+    </SearchStack.Navigator>
+  );
+};
+
 const AppTabComponent = () => (
-  <MainScreenTab.Navigator>
-    <MainScreenTab.Screen name="Diary" component={Diary} />
-    <MainScreenTab.Screen name="News" component={News} />
+  <MainScreenTab.Navigator
+    initialRouteName="Home"
+    screenOptions={({route}) => ({
+      tabBarIcon: ({focused, color, size}) => {
+        let iconName;
+
+        if (route.name === 'Home') {
+          iconName = focused ? 'home' : 'home-outline';
+        } else if (route.name === 'Search') {
+          iconName = 'search';
+        }
+        return <Icon name={iconName} size={size} color={color} />;
+      },
+    })}
+    tabBarOptions={{
+      showLabel: false,
+      activeTintColor: 'black',
+      inactiveTintColor: 'gray',
+    }}>
+    <MainScreenTab.Screen name="Home" component={HomeView} />
+    <MainScreenTab.Screen name="Search" component={Search} />
   </MainScreenTab.Navigator>
 );
 
 export const RootNavigator = () => {
   return (
-    <AuthStack.Navigator
-      screenOptions={{ headerShown: false }}
-    >
+    <AuthStack.Navigator screenOptions={{headerShown: false}}>
       {isLoggedIn ? (
         <AuthStack.Screen name="Main" component={AppTabComponent} />
       ) : (

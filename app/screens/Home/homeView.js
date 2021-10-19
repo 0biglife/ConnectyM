@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 
 import {StyleSheet, Text, View} from 'react-native';
 
-class DiaryComponent extends Component {
+class HomeView extends Component {
   render() {
     return (
       <View
@@ -11,7 +11,7 @@ class DiaryComponent extends Component {
           alignCItems: 'center',
           justifyContent: 'center',
         }}>
-        <Text>Diarycomponent</Text>
+        <Text>HomeView</Text>
       </View>
     );
   }
@@ -19,4 +19,4 @@ class DiaryComponent extends Component {
 
 const styles = StyleSheet.create({});
 
-export default DiaryComponent;
+export default HomeView;

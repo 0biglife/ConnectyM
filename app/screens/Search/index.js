@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 
 import {StyleSheet, Text, View} from 'react-native';
 
-class NewsComponent extends Component {
+class SearchComponent extends Component {
   render() {
     return (
       <View
@@ -11,7 +11,7 @@ class NewsComponent extends Component {
           alignCItems: 'center',
           justifyContent: 'center',
         }}>
-        <Text>NewsComponent</Text>
+        <Text>SearchComponent</Text>
       </View>
     );
   }
@@ -19,4 +19,4 @@ class NewsComponent extends Component {
 
 const styles = StyleSheet.create({});
 
-export default NewsComponent;
+export default SearchComponent;
