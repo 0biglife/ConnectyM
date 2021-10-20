@@ -8,7 +8,8 @@ import AuthComponent from './components/auth';
 // import Home from './components/Home';
 // import HomeView from './components/Home/homeView';
 import {HomeView} from './screens/Home';
-import Search from './screens/Search';
+import {SearchView} from './screens/Search';
+import {LoginView} from './screens/Login';
 
 //Icons
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -33,34 +34,6 @@ const SearchStack = createStackNavigator();
 
 const isLoggedIn = false;
 
-// const TabBarIcon = (focused, name) => {
-//   let iconName, iconSize;
-//   if (name === 'Home') {
-//     iconName = 'home';
-//   } else if (name === 'Search') {
-//     iconName = 'search';
-//   }
-
-//   return <Icon name={iconName} size={iconSize} color="#fff" />;
-// };
-
-const HomeStackComponent = () => {
-  return (
-    <HomeStack.Navigator>
-      {/* <HomeStack.Screen name="Home" component={Home} /> */}
-      <HomeStack.Screen name="HomeView" component={HomeView} />
-    </HomeStack.Navigator>
-  );
-};
-
-const SearchStackComponent = () => {
-  return (
-    <SearchStack.Navigator>
-      <SearchStack.Screen name="Search" component={Search} />
-    </SearchStack.Navigator>
-  );
-};
-
 const AppTabComponent = () => (
   <MainScreenTab.Navigator
     initialRouteName="Home"
@@ -76,13 +49,9 @@ const AppTabComponent = () => (
         return <Icon name={iconName} size={size} color={color} />;
       },
     })}
-    tabBarOptions={{
-      showLabel: false,
-      activeTintColor: 'black',
-      inactiveTintColor: 'gray',
-    }}>
+    >
     <MainScreenTab.Screen name="Home" component={HomeView} />
-    <MainScreenTab.Screen name="Search" component={Search} />
+    <MainScreenTab.Screen name="Search" component={SearchView} />
   </MainScreenTab.Navigator>
 );
 
@@ -93,7 +62,7 @@ export const RootNavigator = () => {
         <AuthStack.Screen name="Main" component={AppTabComponent} />
       ) : (
         <>
-          <AuthStack.Screen name="SignIn" component={AuthComponent} />
+          <AuthStack.Screen name="Login" component={LoginView} />
           <AuthStack.Screen
             name="AppTabComponent"
             component={AppTabComponent}
