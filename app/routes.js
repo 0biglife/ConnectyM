@@ -1,4 +1,5 @@
 import React from 'react';
+import Button from './components/Button';
 
 import {createStackNavigator} from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
@@ -12,7 +13,9 @@ import {SearchView} from './screens/Search';
 import {LoginView} from './screens/Login';
 
 //Icons
-import Icon from 'react-native-vector-icons/Ionicons';
+import IonIcon from 'react-native-vector-icons/Ionicons';
+import FontistoIcon from 'react-native-vector-icons/Fontisto';
+
 
 const AuthStack = createStackNavigator();
 const MainScreenTab = createBottomTabNavigator();
@@ -46,14 +49,21 @@ const AppTabComponent = () => (
         } else if (route.name === 'Search') {
           iconName = 'search';
         }
-        return <Icon name={iconName} size={size} color={color} />;
+        return <IonIcon name={iconName} size={size} color={color} />;
       },
-    })}
-    >
-    <MainScreenTab.Screen name="Home" component={HomeView} />
+    })}>
+    <MainScreenTab.Screen
+      name="Home"
+      component={HomeView}
+      options={{
+        headerRight: () => <Button />,
+      }}
+    />
     <MainScreenTab.Screen name="Search" component={SearchView} />
   </MainScreenTab.Navigator>
 );
+
+
 
 export const RootNavigator = () => {
   return (

@@ -3,14 +3,15 @@ import {
   StyleSheet,
   Text,
   View,
-  Button,
   Platform,
   Image,
   ScrollView,
 } from 'react-native';
 import Input from '../../utils/forms/input';
+import Button from '../../components/Button';
 import validationRules from '../../utils/forms/validationRules';
 import LogoImage from '../../assets/images/Connecty_logo.png';
+import HomeView from '../Home';
 
 class LoginView extends Component {
   state = {
@@ -81,6 +82,10 @@ class LoginView extends Component {
     ) : null;
   };
 
+  gotoHomeView() {
+    this.props.navigation.navigate('AppTabComponent');
+  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -118,7 +123,7 @@ class LoginView extends Component {
             <Button
               title="go to HomeView"
               color="#48567f"
-              onPress={() => this.props.goWithoutLogin()}
+              onPress={() => this.gotoHomeView()}
             />
           </View>
         </View>
