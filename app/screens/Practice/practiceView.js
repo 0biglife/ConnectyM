@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
+
 import {StyleSheet, Text, View} from 'react-native';
 
-class HomeView extends Component {
+class PracticeView extends Component {
   render() {
     return (
       <View
@@ -10,7 +11,7 @@ class HomeView extends Component {
           alignCItems: 'center',
           justifyContent: 'center',
         }}>
-        <Text>HomeView</Text>
+        <Text>Practice View</Text>
       </View>
     );
   }
@@ -18,4 +19,4 @@ class HomeView extends Component {
 
 const styles = StyleSheet.create({});
 
-export default HomeView;
+export default PracticeView;

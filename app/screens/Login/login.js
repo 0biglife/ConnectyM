@@ -7,6 +7,7 @@ import {
   Image,
   ScrollView,
 } from 'react-native';
+import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import Input from '../../utils/forms/input';
 import Button from '../../components/Button';
 import validationRules from '../../utils/forms/validationRules';

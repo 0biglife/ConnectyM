@@ -20,9 +20,7 @@ const Title = styled.Text`
 
 const Button = ({title, onPress, containerStyle, textStyle}) => {
   return (
-    <TouchableOpacity
-      onPress={() => alert('Test')}
-      style={{flexDirection: 'row'}}>
+    <TouchableOpacity onPress={onPress} style={{flexDirection: 'row'}}>
       <Container style={containerStyle}>
         <Title style={textStyle}>{title}</Title>
       </Container>

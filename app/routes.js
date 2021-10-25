@@ -8,9 +8,12 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import AuthComponent from './components/auth';
 // import Home from './components/Home';
 // import HomeView from './components/Home/homeView';
+import {LoginView} from './screens/Login';
 import {HomeView} from './screens/Home';
 import {SearchView} from './screens/Search';
-import {LoginView} from './screens/Login';
+import {MatchView} from './screens/Match';
+import {PracticeView} from './screens/Practice';
+import {ProfileView} from './screens/Profile';
 
 //Icons
 import IonIcon from 'react-native-vector-icons/Ionicons';
@@ -48,9 +51,16 @@ const AppTabComponent = () => (
           iconName = focused ? 'home' : 'home-outline';
         } else if (route.name === 'Search') {
           iconName = 'search';
+        } else if (route.name === 'Match') {
+          iconName = 'people';
+        } else if (route.name === 'Practice') {
+          iconName = 'mic';
+        } else if (route.name === 'Profile') {
+          iconName = 'person';
         }
         return <IonIcon name={iconName} size={size} color={color} />;
       },
+      headerTitleAlign: 'center',
     })}>
     <MainScreenTab.Screen
       name="Home"
@@ -60,6 +70,9 @@ const AppTabComponent = () => (
       }}
     />
     <MainScreenTab.Screen name="Search" component={SearchView} />
+    <MainScreenTab.Screen name="Match" component={MatchView} />
+    <MainScreenTab.Screen name="Practice" component={PracticeView} />
+    <MainScreenTab.Screen name="Profile" component={ProfileView} />
   </MainScreenTab.Navigator>
 );
 

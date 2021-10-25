@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 
 import {StyleSheet, Text, View} from 'react-native';
 
-class SearchComponent extends Component {
+class SearchView extends Component {
   render() {
     return (
       <View
@@ -19,4 +19,4 @@ class SearchComponent extends Component {
 
 const styles = StyleSheet.create({});
 
-export default SearchComponent;
+export default SearchView;
