@@ -5,9 +5,6 @@ import {createStackNavigator} from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
 //Screens
-import AuthComponent from './components/auth';
-// import Home from './components/Home';
-// import HomeView from './components/Home/homeView';
 import {LoginView} from './screens/Login';
 import {HomeView} from './screens/Home';
 import {SearchView} from './screens/Search';
@@ -24,19 +21,6 @@ const AuthStack = createStackNavigator();
 const MainScreenTab = createBottomTabNavigator();
 const HomeStack = createStackNavigator();
 const SearchStack = createStackNavigator();
-
-// const headerConfig = {
-//   headerTitleAlign: 'center',
-//   headerTintColor: '#fff',
-//   headerStyle: {
-//     backgroundColor: '#7487C5',
-//   },
-//   // headerTitle: <Logo />,
-//   headerTitleStyle: {
-//     flex: 1,
-//     textAlign: 'center',
-//   },
-// };
 
 const isLoggedIn = false;
 
