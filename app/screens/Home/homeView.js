@@ -6,6 +6,7 @@ import {
   FlatList,
   TouchableOpacity,
   ActivityIndicator,
+  Image,
 } from 'react-native';
 import IonIcon from 'react-native-vector-icons/Ionicons';
 
@@ -19,7 +20,6 @@ const HomeView = () => {
       .then(re => re.json())
       .then(re => {
         setFeed(re.articles);
-        console.log(re.articles);
       });
   }, []);
 
@@ -52,7 +52,18 @@ const HomeView = () => {
             }}
             renderItem={({item, index}) => (
               <View style={styles.postView}>
-                <Text>{item.author}</Text>
+                <View style={styles.postTitle}>
+                  <View stlye={styles.ImageView}>
+                    <Image
+                      style={styles.profileImgae}
+                      source={{uri: item.urlToImage}}
+                    />
+                    <Text>{item.author}</Text>
+                  </View>
+                  <View>
+                    <Text>Options</Text>
+                  </View>
+                </View>
               </View>
             )}
           />
@@ -67,7 +78,28 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   mainPostView: {
+    width: '100%',
+  },
+  postView: {
     width: '90%',
+    alignItems: 'center',
+    marginTop: 20,
+  },
+  postTitle: {
+    width: '90%',
+    display: 'flex',
+    justifyContent: 'space-between',
+    flexDirection: 'row',
+  },
+  profileImgae: {
+    backgroundColor: 'rgba(0,0,0,0.06)',
+    width: 50,
+    height: 50,
+    borderRadius: 50,
+  },
+  ImageView: {
+    display: 'flex',
+    flexDirection: 'row',
   },
 });
 
