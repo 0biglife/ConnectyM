@@ -5,7 +5,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
 //Screens
-import {LoginView} from './screens/Login';
+import {Login} from './screens/Login';
 import {HomeView} from './screens/Home';
 import {SearchView} from './screens/Search';
 import {MatchView} from './screens/Match';
@@ -69,10 +69,11 @@ export const RootNavigator = () => {
         <AuthStack.Screen name="Main" component={AppTabComponent} />
       ) : (
         <>
-          <AuthStack.Screen name="Login" component={LoginView} />
+          <AuthStack.Screen name="Login" component={Login} />
           <AuthStack.Screen
             name="AppTabComponent"
             component={AppTabComponent}
+            options={{gestureEnabled: false}}
           />
         </>
       )}

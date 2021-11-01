@@ -1,95 +1,17 @@
-import React, {Component} from 'react';
-import {
-  StyleSheet,
-  Text,
-  View,
-  Platform,
-  Image,
-  ScrollView,
-} from 'react-native';
-import {useSafeAreaInsets} from 'react-native-safe-area-context';
-import Input from '../../utils/forms/input';
+import React from 'react';
+import {StyleSheet, View, Platform, Image} from 'react-native';
+// import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import Button from '../../components/Button';
-import validationRules from '../../utils/forms/validationRules';
 import LogoImage from '../../assets/images/Connecty_logo.png';
-import HomeView from '../Home';
 
-class LoginView extends Component {
-  state = {
-    loading: false,
+const Login = ({navigation}) => {
 
-    type: '로그인',
-    action: '로그인',
-    actionMode: '회원가입', //Button Title String값
-    hasErrors: false,
-    form: {
-      email: {
-        value: '',
-        type: 'textinput',
-        rules: {
-          isRequired: true,
-          isEmail: true,
-        },
-        valid: false,
-      },
-      password: {
-        value: '',
-        type: 'textinput',
-        rules: {
-          isRequired: true,
-          minLength: 6,
-        },
-        valid: false,
-      },
-      confirmPassword: {
-        value: '',
-        type: 'textinput',
-        rules: {
-          confirmPassword: 'password',
-        },
-        valid: false,
-      },
-    },
-  };
+  // const gotoHomeView = () => {
+  //   navigation.navigator('AppTabComponent');
+  // }
 
-  goWithoutLogin = () => {
-    this.props.navigation.navigate('AppTabComponent');
-  };
-
-  updateInput = (name, value) => {
-    this.setState({
-      hasErrors: false,
-    });
-    let formCopy = this.state.form;
-    formCopy[name].value = value;
-
-    //rules
-    let rules = formCopy[name].rules;
-    let valid = validationRules(value, rules, formCopy);
-    formCopy[name].valid = valid;
-
-    this.setState({
-      form: formCopy,
-    });
-
-    // console.warn(this.state.form);
-  };
-
-  formHasErrors = () => {
-    this.state.hasErrors ? (
-      <View style={styles.errorContainer}>
-        <Text style={styles.errorLabel}>에러 발생</Text>
-      </View>
-    ) : null;
-  };
-
-  gotoHomeView() {
-    this.props.navigation.navigate('AppTabComponent');
-  }
-
-  render() {
-    return (
-      <View style={styles.container}>
+  return(
+    <View style={styles.container}>
         <View style={{alignItems: 'center', marginBottom: 30}}>
           <Image
             source={LogoImage}
@@ -100,37 +22,18 @@ class LoginView extends Component {
             }}
           />
         </View>
-        <Input
-          value={this.state.form.email.value}
-          type={this.state.form.email.type}
-          autoCapitalize={'none'}
-          keyboardType={'email-address'}
-          placeholder="이메일 주소"
-          placeholderTextColor="#ddd"
-          onChangeText={value => this.updateInput('email', value)}
-        />
-        <Input
-          value={this.state.form.password.value}
-          type={this.state.form.password.type}
-          secureTextEntry={true}
-          placeholder="비밀번호"
-          placeholderTextColor="#ddd"
-          onChangeText={value => this.updateInput('password', value)}
-        />
-        {this.formHasErrors()}
 
         <View style={{marginTop: 40}}>
           <View style={styles.button}>
             <Button
-              title="go to HomeView"
+              title="BLANK"
               color="#48567f"
-              onPress={() => this.gotoHomeView()}
+              onPress={() => navigation.navigate('AppTabComponent')}
             />
           </View>
         </View>
       </View>
-    );
-  }
+  );
 }
 
 const styles = StyleSheet.create({
@@ -175,4 +78,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default LoginView;
+export default Login;
