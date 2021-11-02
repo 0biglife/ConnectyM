@@ -1,13 +1,13 @@
 import React, {useState, useEffect} from 'react';
-import {StyleSheet, FlatList, ActivityIndicator} from 'react-native';
+import {StyleSheet, View, FlatList, ActivityIndicator} from 'react-native';
 import styled from 'styled-components/native';
 import PostCard from '../../components/PostCard';
 
 const Container = styled.View`
-  background-color: #fff;
   flex: 1;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  background-color: #fff;
   padding: 10px;
 `;
 
@@ -30,12 +30,14 @@ const HomeView = () => {
 
   return (
     <Container>
-      <FlatList
-        data={feed}
-        renderItem={({item}) => <PostCard item={item} />}
-        keyExtractor={item => item.articles}
-        showsVerticalScrollIndicator={false}
-      />
+      <View>
+        <FlatList
+          data={feed}
+          renderItem={({item}) => <PostCard item={item} />}
+          keyExtractor={item => item.articles}
+          showsVerticalScrollIndicator={false}
+        />
+      </View>
     </Container>
     // <View style={styles.mainView}>
     //   <View style={styles.mainPostView}>

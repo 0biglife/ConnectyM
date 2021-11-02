@@ -2,18 +2,10 @@ import React from 'react';
 import styled from 'styled-components/native';
 import IonIcon from 'react-native-vector-icons/Ionicons';
 
-const Container = styled.View`
-  background-color: #fff;
-  flex: 1;
-  align-items: center;
-  justify-content: center;
-  padding: 10px;
-`;
-
 const Card = styled.View`
-  background-color: #f8f8f8;
+  background-color: #f99; //#f8f8f8;
   width: 100%;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   border-radius: 10px;
 `;
 
@@ -44,6 +36,7 @@ const UserInfoText = styled.View`
 const PostTime = styled.Text`
   font-size: 12px;
   color: #666;
+  padding-top: 4px;
 `;
 
 const PostText = styled.Text`
