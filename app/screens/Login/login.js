@@ -9,7 +9,7 @@ import {
   GoogleSignin,
   GoogleSigninButton,
   statusCodes,
-} from '@react-native-community/google-signin';
+} from '@react-native-google-signin/google-signin';
 
 const Container = styled.View`
   flex: 1;
@@ -39,6 +39,7 @@ const Login = ({navigation}) => {
       const userInfo = await GoogleSignin.signIn();
       console.log('please let me do this____', userInfo);
       setUserInfo(userInfo)
+      console.log(userInfo);
     } catch (error) {
       console.log('Error Message___', error.message);
       if (error.code === statusCodes.SIGN_IN_CANCELLED) {
