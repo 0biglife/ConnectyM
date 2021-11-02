@@ -24,6 +24,7 @@ const UserImg = styled.Image`
 const UserName = styled.Text`
   font-size: 14px;
   font-weight: bold;
+  padding-right: 40px;
   /* font-family: ; */
 `;
 

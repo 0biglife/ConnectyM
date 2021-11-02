@@ -22,7 +22,7 @@ const MainScreenTab = createBottomTabNavigator();
 const HomeStack = createStackNavigator();
 const SearchStack = createStackNavigator();
 
-const isLoggedIn = true;
+const isLoggedIn = false;
 
 const AppTabComponent = () => (
   <MainScreenTab.Navigator

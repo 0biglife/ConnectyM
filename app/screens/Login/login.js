@@ -9,8 +9,7 @@ import {
   GoogleSignin,
   GoogleSigninButton,
   statusCodes,
-} from '@react-native-google-signin/google-signin';
-
+} from '@react-native-community/google-signin';
 
 const Container = styled.View`
   flex: 1;
@@ -25,34 +24,69 @@ const Login = ({navigation}) => {
   const [error, setErrror] = useState(null);
 
   useEffect(() => {
-    configureGoogleSign();
-  }, []);
-
-  configureGoogleSign = () => {
     GoogleSignin.configure({
       webClientId:
         '21966285335-pd59r4mk54v02nd8v5k2kem3gt1th3fl.apps.googleusercontent.com',
-      offlineAccess: false,
-    });;
-  };
+      offlineAccess: true,
+      forceCodeForRefreshToken: true,
+    });
+    isSignedIn()
+  }, []);
 
-  _signIn = async () => {
+  const signIn = async () => {
     try {
       await GoogleSignin.hasPlayServices();
       const userInfo = await GoogleSignin.signIn();
-      console.log(userInfo);
+      console.log('please let me do this____', userInfo);
+      setUserInfo(userInfo)
     } catch (error) {
+      console.log('Error Message___', error.message);
       if (error.code === statusCodes.SIGN_IN_CANCELLED) {
-        // user cancelled the login flow
+        console.log('User Cancelled the Login Flow');
       } else if (error.code === statusCodes.IN_PROGRESS) {
-        // operation (e.g. sign in) is in progress already
+        console.log('Signin In')
       } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
-        // play services not available or outdated
+        console.log('Play Services Not Available');
       } else {
-        // some other error happened
+        console.log('Some other Error Happened');
       }
     }
   };
+
+  const isSignedIn = async () => {
+    const isSignedIn = await GoogleSignin.isSignedIn()
+    if (!!isSignedIn) {
+      getCurrentUserInfo()
+    } else {
+      console.log('Please Login')
+    }
+  }
+
+  const getCurrentUserInfo = async () => {
+    try {
+      const userInfo = await GoogleSignin.signInSilently();
+      console.log('edit__', user);
+      setUserInfo(userInfo);
+    } catch (error) {
+      if (error.code === statusCodes.SIGN_IN_REQUIRED) {
+        alert('User has not signed in yet');
+        console.log('User has not signed in yet');
+      } else {
+        alert('Something went wrong');
+        console.log('Something went wrong');
+      }
+    }
+  }
+
+  const signOut = async () => {
+    try {
+      await GoogleSignin.revokeAccess();
+      await GoogleSignin.signOut();
+      setUserInfo({});
+    } catch (error) {
+      console.error(error);
+    }
+  }
 
   return (
     <View style={styles.container}>
@@ -74,14 +108,15 @@ const Login = ({navigation}) => {
             color="#48567f"
             onPress={() => navigation.navigate('AppTabComponent')}
           />
-          <GoogleSigninButton
-            style={{ width: 192, height: 48 }}
-            size={GoogleSigninButton.Size.Wide}
-            color={GoogleSigninButton.Color.Dark}
-            onPress={_signIn}
-          />
         </View>
       </View>
+      <GoogleSigninButton
+        onPress={signIn}
+        size={GoogleSigninButton.Size.Wide}
+        color={GoogleSigninButton.Color.Dark}
+        style={{width: '100%', height: 48}}
+      />
+      
     </View>
   );
 };
